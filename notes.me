@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <table id="company" style="border:2px solid black">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>State</th>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>32</td>
+                <td>Wisconsin</td>
+            </tr>    
+            <tr class="mid">
+                <td>Sally</td>
+                <td>33</td>
+                <td>California</td>
+            </tr>
+            <tr>
+                <td>George Georegeson</td>
+                <td>53</td>
+                <td>New York</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    
+    <label for="nameInput">Enter a Name:</label>
+    <input id="nameInput" autocomplete="off" placeholder="Name"/>
+    <button id="submitButton">Submit</button>
+    <script src="main.js"></script>
+</body>
+</html>
+Raw
+main.js
+let nameInput = document.querySelector("#nameInput");
+let submitButton = document.querySelector("#submitButton");
+let table = document.querySelector('table')
+
+let ctr = 0;
+submitButton.addEventListener('click', () => {
+
+    //console.log("testing!")
+    let newRow = document.createElement('tr');
+
+    if(ctr % 2 === 0){
+        newRow.className = "mid";
+    }
+    
+    console.log(nameInput.value)
+    newRow.innerHTML = 
+        `<td>${nameInput.value}</td>
+         <td>30</td>
+         <td>Maryland</td>`
+
+    table.appendChild(newRow);
+
+    ctr++;
+    
+})
+Raw
+style.css
+tr, th, td {
+    border: 1px solid black
+}
+
+#company {
+    background-color: antiquewhite;
+}
+
+.mid {
+    background-color: coral;
+    font-style: italic;
+}
